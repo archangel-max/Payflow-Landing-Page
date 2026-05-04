@@ -12,6 +12,10 @@ body {
   color: #0e2239;
 }
 
+h2 {
+  font-size: 42px;
+}
+
 /* ================= NAVBAR ================= */
 .navbar {
   width: 100%;
@@ -57,6 +61,9 @@ body {
   text-decoration: none;
   padding: 12px 24px;
   border-radius: 8px;
+  box-shadow:
+    0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0px 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 
 .btn-outline {
@@ -68,7 +75,7 @@ body {
 }
 
 .large {
-  padding: 18px 35px;
+  padding: 18px 28px;
 }
 
 /* ================= HERO ================= */
@@ -109,10 +116,11 @@ body {
   overflow: hidden; /* important */
 }
 
-.hero-card img {
+.hero img {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* makes image fill perfectly */
+  height: 618px;
+  /*object-fit: cover;  makes image fill perfectly */
+  object-fit: contain;
   display: block;
 }
 
@@ -142,7 +150,8 @@ body {
 .card {
   flex: 1;
   background: #eef3fb;
-  padding: 30px;
+  padding: 40px;
+  border: 1px solid rgb(195, 198, 213, 0.3);
   border-radius: 15px;
 }
 
@@ -174,7 +183,7 @@ body {
 }
 
 .card p {
-  color: #555;
+  color: #434653;
   line-height: 1.7;
 }
 
@@ -228,11 +237,18 @@ body {
   font-weight: bold;
 }
 
-.chart-box {
+.chart-card img {
+  width: 100%;
+  height: 192px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* .chart-box {
   height: 260px;
   border-radius: 12px;
   background: linear-gradient(135deg, #03111f, #0b223a);
-}
+} */
 
 .bottom-cards {
   display: flex;
@@ -286,6 +302,48 @@ body {
 
 .green-text {
   color: #067a58;
+}
+
+/* ================= TESTIMONIALS SECTION ================= */
+.testimonials {
+  display: flex;
+  background: white;
+  gap: 64px;
+  padding: 64px 80px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.testimonials-container {
+  display: flex;
+  gap: 40px;
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.author {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.author h6 {
+  font-size: 16px;
+}
+
+.author p {
+  font-size: 14px;
+}
+
+.author img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
 }
 
 /* ================= FINAL CTA ================= */
@@ -342,6 +400,7 @@ body {
 .cta-buttons .btn-white {
   background: #ffffff;
   color: #00368f;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .cta-buttons .btn-outline {
@@ -358,6 +417,8 @@ footer {
   /* flex-direction: column; */
   justify-content: center;
   /* align-items: center; */
+  /* justify-items: center; */
+  border-top: 1px solid #e2e8f0;
 }
 
 footer div {
@@ -411,12 +472,17 @@ footer .links ul {
   .features,
   .dashboard-section,
   .bottom-cards,
+  .testimonials-container,
   .cta-buttons {
     flex-direction: column;
   }
 
   .cta-buttons a {
     padding: 20px 30px;
+  }
+
+  .hero img {
+    height: auto;
   }
   .hero-text,
   .left-text,
