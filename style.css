@@ -723,17 +723,10 @@ footer .links ul {
     padding: 20px 30px;
   }
 
-  .hero img {
-    /* height: auto; */
-  }
   .hero-text,
   .left-text,
   .right-dashboard {
     width: 100%;
-  }
-
-  .hero-card {
-    /* width: 100%; */
   }
 
   .navbar {
