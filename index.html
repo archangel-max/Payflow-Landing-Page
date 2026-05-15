@@ -6,29 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PayFlow</title>
     <link rel="stylesheet" href="style.css" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <!-- ================= NAVBAR ================= -->
     <header class="navbar">
       <div class="logo">PayFlow</div>
-
       <nav class="nav-links">
         <a href="#">Features</a>
         <a href="#">Analytics</a>
         <a href="#">Pricing</a>
         <a href="#">About</a>
       </nav>
-
       <div class="nav-btns">
-        <a href="#" class="login">Log In</a>
-        <a href="#" class="btn-primary">Get Started</a>
+        <a href="#" class="login button">Log In</a>
+        <a href="#" class="btn-primary button">Get Started</a>
       </div>
     </header>
 
@@ -36,22 +34,22 @@
     <section class="hero">
       <div class="hero-text">
         <h1>Master Your Wealth with Precision Clarity.</h1>
-
         <p>
           PayFlow harmonizes your income and expenses into a single, intuitive
           stream. Experience the freedom of automated tracking and deep
           financial insight.
         </p>
-
         <div class="hero-buttons">
-          <a href="#" class="btn-primary large">Get Started for Free</a>
-          <a href="#" class="btn-outline large">Watch Demo</a>
+          <a href="#" class="btn-primary large button">Get Started for Free</a>
+          <a href="#" class="btn-outline large button">Watch Demo</a>
         </div>
       </div>
-      <img src="./assets/Hero-card.png" alt="Hero Dashboard" />
-      <!-- <div class="hero-card">
-        <img src="Hero-card.png" alt="Hero Dashboard" />
-      </div> -->
+      <div class="hero-card-wrapper">
+        <div class="hero-card">
+          <div class="glare"></div>
+          <img src="./assets/Hero-card.png" alt="Hero Dashboard" />
+        </div>
+      </div>
     </section>
 
     <!-- ================= FEATURES ================= -->
@@ -61,7 +59,7 @@
     </section>
 
     <section class="features">
-      <div class="card">
+      <div class="card reveal delay-1">
         <div class="icon blue">◫</div>
         <h3>Smart Budgeting</h3>
         <p>
@@ -69,8 +67,7 @@
           limits that actually work with your lifestyle.
         </p>
       </div>
-
-      <div class="card">
+      <div class="card reveal delay-2">
         <div class="icon green">↗</div>
         <h3>Deep Analytics</h3>
         <p>
@@ -78,8 +75,7 @@
           before they impact your net worth.
         </p>
       </div>
-
-      <div class="card">
+      <div class="card reveal delay-3">
         <div class="icon red">🔔</div>
         <h3>Real-time Alerts</h3>
         <p>
@@ -93,12 +89,10 @@
     <section class="dashboard-section">
       <div class="left-text">
         <h2>Everything you need to thrive.</h2>
-
         <p>
           Our interface is designed for humans, not accountants. Focus on the
           flow of your money without the friction of spreadsheets.
         </p>
-
         <ul>
           <li>✔ Multi-bank synchronization</li>
           <li>✔ Crypto & Investment tracking</li>
@@ -112,17 +106,9 @@
             <span>Monthly Expenditure</span>
             <span>Jan - Jun 2024</span>
           </div>
-          <img
-            src="./assets/Spending Chart Preview.png"
-            alt="spending chart preview"
-          />
-
-          <!-- <div class="chart-box">
-            <img
-              src="Spending Chart Preview.png"
-              alt="spending chart preview"
-            />
-          </div> -->
+          <div class="stock-chart-wrapper">
+            <div id="chart"></div>
+          </div>
         </div>
 
         <div class="bottom-cards">
@@ -140,24 +126,67 @@
             </div>
           </div>
 
+          <!--CURRENCY CONVERTER-->
           <div class="mini-card">
-            <h4>RECENT</h4>
+            <h4>CURRENCY CONVERTER</h4>
 
-            <p>Apple Store <span class="red-text">-$12.99</span></p>
-            <p>Whole Foods <span class="red-text">-$84.20</span></p>
-            <p>Salary Deposit <span class="green-text">+$4,200</span></p>
+            <div class="currency-converter">
+              <div class="converter-container">
+                <div class="input-group">
+                  <label>From</label>
+                  <div class="input-wrapper">
+                    <input
+                      type="number"
+                      id="amount"
+                      placeholder="Enter amount"
+                      value="1"
+                    />
+                    <select id="fromCurrency">
+                      <option value="USD">USD</option>
+                      <option value="EUR">EUR</option>
+                      <option value="GBP">GBP</option>
+                      <option value="JPY">JPY</option>
+                      <option value="CAD">CAD</option>
+                      <option value="INR">INR</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button class="swap-btn" onclick="swapCurrencies()">⇄</button>
+
+                <div class="input-group">
+                  <label>To</label>
+                  <div class="input-wrapper">
+                    <input
+                      type="number"
+                      id="convertedAmount"
+                      placeholder="Converted amount"
+                      readonly
+                    />
+                    <select id="toCurrency">
+                      <option value="USD">USD</option>
+                      <option value="EUR">EUR</option>
+                      <option value="GBP">GBP</option>
+                      <option value="JPY">JPY</option>
+                      <option value="CAD">CAD</option>
+                      <option value="INR">INR</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="exchange-rate" id="exchangeRate"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= GOODNEWS'S CODE GOES HERE================= -->
-
     <!-- ================= TESTIMONIAL ================= -->
-    <section class="testimonials">
+    <section class="testimonials reveal delay-1">
       <h2>Trusted by 50,000+ Pros</h2>
       <div class="testimonials-container">
-        <div class="card testimonial">
+        <div class="card testimonial reveal delay-1">
           <p>
             "PayFlow changed my relationship with money. I finally understand
             where it's going instead of wondering where it went."
@@ -170,7 +199,7 @@
             </div>
           </div>
         </div>
-        <div class="card testimonial">
+        <div class="card testimonial reveal delay-2">
           <p>
             "The analytics are unmatched. I've cut my unnecessary subscriptions
             by 20% in the first two months alone."
@@ -183,7 +212,7 @@
             </div>
           </div>
         </div>
-        <div class="card testimonial">
+        <div class="card testimonial reveal delay-3">
           <p>
             "The interface is so clean. It's the only finance app I actually
             enjoy opening every morning."
@@ -199,10 +228,8 @@
       </div>
     </section>
 
-    <!-- ================= TIMOTHY'S CODE ================= -->
-
     <!-- ================= FINAL CTA ================= -->
-    <section class="final-cta">
+    <section class="final-cta reveal delay-1">
       <div class="cta-container">
         <h4 class="main">Start your journey to financial freedom.</h4>
         <p>
@@ -210,9 +237,38 @@
           card required to start.
         </p>
         <div class="cta-buttons">
-          <a href="#" class="btn-white">Get Started Now</a>
-          <a href="#" class="btn-outline">Contact Sales</a>
+          <a href="#" class="btn-white button">Get Started Now</a>
+          <a href="#" class="btn-outline button">Contact Sales</a>
         </div>
+      </div>
+    </section>
+
+    <!-- ================= FINANCE NEWS SECTION ================= -->
+    <section class="news-section reveal delay-1">
+      <div class="news-header">
+        <div>
+          <p class="news-eyebrow">MARKET FLOW</p>
+          <h2>Latest Financial News</h2>
+        </div>
+        <div class="news-scroll-hint">
+          <span>Scroll to explore</span>
+          <span class="scroll-arrow">→</span>
+        </div>
+      </div>
+      <div class="news-track-wrapper-oga">
+        <div class="news-track-wrapper">
+          <div class="news-track" id="newsTrack">
+            <!-- Cards injected by JS -->
+            <div class="news-skeleton-cards">
+              <div class="news-card skeleton"></div>
+              <div class="news-card skeleton"></div>
+              <div class="news-card skeleton"></div>
+              <div class="news-card skeleton"></div>
+              <div class="news-card skeleton"></div>
+            </div>
+          </div>
+        </div>
+        <div class="news-fade-right"></div>
       </div>
     </section>
 
@@ -282,5 +338,7 @@
         </ul>
       </div>
     </footer>
+    <script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
